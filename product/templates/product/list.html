@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{% for item in object_list %}
+<p>{{ item.name }}</p>
+<p>{{ item.price }}</p>
+<p>{{ item.ability }}</p>
+<p>{{ item.status }}</p>
+{% endfor %}
+
+{% endblock contents %}
