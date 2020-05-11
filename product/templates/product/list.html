@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 {% block contents %}
 
-{% for item in object_list %}
+{% for item in items %}
 <p>{{ item.name }}</p>
 <p>{{ item.price }}</p>
-<p>{{ item.ability }}</p>
+<p>{{ item.memo }}</p>
 <p>{{ item.status }}</p>
 {% endfor %}
 
+
+
+
+{% for a in images_list %}
+<img src="{{ a.photo1.url }}" width="200" height="200">
+{% endfor %}
 {% endblock contents %}
