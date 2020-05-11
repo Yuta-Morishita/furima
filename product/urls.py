@@ -1,14 +1,14 @@
 
 from django.urls import path
-from . views import IndexView, CreateView, ListView, DetailView, UpdateView, DeleteView
+from . import views
 
 
 app_name = 'product'
 urlpatterns = [
-    path('', IndexView.as_view(), name='index'),
-    path('create/', CreateView.as_view(), name='create'),
-    path('list/', ListView.as_view(), name='list'),
-    path('<int:pk>/detail/', DetailView.as_view(), name='detail'),
-    path('<int:pk>/update/', UpdateView.as_view(), name='update'),
-    path('<int:pk>/delete/', DeleteView.as_view(), name='delete')
+    path('', views.IndexView.as_view(), name='index'),
+    # path('create/', CreateView.as_view(), name='create'),
+    path('list/', views.ListView.as_view(), name='list'),
+    path('<int:pk>/detail/', views.DetailView.as_view(), name='detail'),
+    # path('<int:pk>/update/', UpdateView.as_view(), name='update'),
+    path('<int:pk>/delete/', views.DeleteView.as_view(), name='delete')
 ]
