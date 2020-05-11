@@ -1,6 +1,6 @@
 
-from django.views.generic import CreateView, TemplateView, ListView, DetailView, UpdateView, DeleteView
-from .models import ItemModel
+from django.views.generic import
+from .models import ItemModel, ImageModel
 from django.urls import reverse_lazy
 
 
@@ -11,8 +11,8 @@ class IndexView(TemplateView):
 
 class CreateView(CreateView):
     template_name = 'product/create.html'
-    model = ItemModel
-    fields = ('name', 'price', 'ability', 'status', 'shipping_burden', 'shipping_area', 'shipping_days')
+    model = ItemModel, ImageModel
+    fields = ('name', 'price', 'ability', 'status', 'shipping_burden', 'shipping_area', 'shipping_days', 'src')
     success_url = reverse_lazy('product:list')
 
 

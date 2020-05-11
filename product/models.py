@@ -13,7 +13,7 @@ class ItemModel(models.Model):
     name = models.CharField(verbose_name='商品名', max_length=30)
     price = models.IntegerField(verbose_name='価格', validators=[MinValueValidator(100),
                                                                MaxValueValidator(9999999)])
-    ability = models.TextField(verbose_name='商品説明')
+    memo = models.TextField(verbose_name='商品説明')
     status = models.CharField(
         verbose_name='商品状態',
         max_length=100,
@@ -34,3 +34,8 @@ class ItemModel(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ImageModel(models.Model):
+    itemmodel = models.ForeignKey(ItemModel, on_delete=models.CASCADE)
+    src = models.ImageField(verbose_name='出品画像')
