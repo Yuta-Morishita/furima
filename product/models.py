@@ -52,3 +52,7 @@ class Images(models.Model):
     photo3 = models.ImageField(verbose_name='出品画像3')
     photo4 = models.ImageField(verbose_name='出品画像4')
     photo5 = models.ImageField(verbose_name='出品画像5')
+
+    class Meta:
+        verbose_name = '出品画像'
+        verbose_name_plural = '出品商品'
