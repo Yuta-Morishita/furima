@@ -2,6 +2,7 @@
 from django.views import generic
 from .models import Item, Images
 from django.urls import reverse_lazy
+from .forms import ItemCreateForm
 
 
 class IndexView(generic.ListView):
@@ -10,11 +11,20 @@ class IndexView(generic.ListView):
     context_object_name = 'items'
 
 
-# class CreateView(generic.CreateView):
-#     template_name = 'product/create.html'
-#     model = ItemModel, ImageModel
-#     fields = ('name', 'price', 'ability', 'status', 'shipping_burden', 'shipping_area', 'shipping_days', 'src')
-#     success_url = reverse_lazy('product:list')
+class CreateView(generic.CreateView):
+    template_name = 'product/create.html'
+    model = Item
+    form_class = ItemCreateForm
+    success_url = reverse_lazy('product:list')
+
+    def form_valid(self, form):
+        item = form.save(commit=False)
+        item.user = self.request.user
+        item.save()
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
 
 
 class ListView(generic.ListView):
