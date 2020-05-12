@@ -26,7 +26,7 @@ class ListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'images_list': Images.objects.all()
+            'images_list': Images.objects.order_by('photo1')
         })
         items = Item.objects.all()
         return context
